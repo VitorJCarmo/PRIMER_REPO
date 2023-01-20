@@ -79,13 +79,14 @@ public class Personaje {
 	private void calculaAtaque(Personaje p) {
 		 Integer dano;
 		 Integer golpes = getVelocidad() / p.getVelocidad();
+		 golpes = golpes < 1 ? 1 : golpes + 1;
 		 System.out.println("golpes ataque: " + golpes);
-		 golpes = golpes < 0 ? 1 : golpes + 1;
 		 Integer num = randomNum();
 		 if(num < 0)
 			 dano = getAtaque() - p.getDefensa() - num;
 		 else
 			 dano = getAtaque() - p.getDefensa() + num;
+		 dano = dano < 0 ? 0 : dano;
 		 System.out.println("dano ataque: " + dano);
 		 setVida(vida-(dano*golpes));
 	}
@@ -93,13 +94,14 @@ public class Personaje {
 	private void calculaDefensa(Personaje p) {
 		 Integer dano;
 		 Integer golpes =  p.getVelocidad() / getVelocidad();
+		 golpes = golpes < 1 ? 1 : golpes;
 		 System.out.println("golpes defensa: " + golpes);
-		 golpes = golpes < 0 ? 1 : golpes;
 		 Integer num = randomNum();
 		 if(num < 0)
 			 dano = p.getAtaque() - getDefensa() - num;
 		 else
 			 dano = p.getAtaque() - getDefensa() + num;
+		 dano = dano < 0 ? 0 : dano;
 		 System.out.println("dano defensa: " + dano);
 		 p.setVida(vida-(dano*golpes));
 	}
