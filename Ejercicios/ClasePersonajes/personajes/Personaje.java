@@ -83,9 +83,9 @@ public class Personaje {
 		 golpes = golpes < 0 ? 1 : golpes + 1;
 		 Integer num = randomNum();
 		 if(num < 0)
-			 dano = p.getAtaque() - getDefensa() - num;
+			 dano = getAtaque() - p.getDefensa() - num;
 		 else
-			 dano = p.getAtaque() - getDefensa() + num;
+			 dano = getAtaque() - p.getDefensa() + num;
 		 System.out.println("dano ataque: " + dano);
 		 setVida(vida-(dano*golpes));
 	}
